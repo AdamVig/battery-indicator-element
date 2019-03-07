@@ -1,0 +1,40 @@
+{
+  "name": "battery-indicator-element",
+  "version": "1.0.0",
+  "description": "Battery status indicator custom element.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "build": "tsc && sed -i 's#lit-element#/web_modules/lit-element.js#' dist/main.js",
+    "start": "serve .",
+    "lint": "eslint .",
+    "prepare": "pika-web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamvig/battery-indicator-element.git"
+  },
+  "author": "Adam Vigneaux <adam@adamvig.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adamvig/battery-indicator-element/issues"
+  },
+  "homepage": "https://github.com/adamvig/battery-indicator-element#readme",
+  "devDependencies": {
+    "@pika/web": "^0.3.0",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "eslint": "^5.15.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "serve": "^10.1.2",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "tslib": "^1.9.3"
+  }
+}
