@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Battery Status Indicator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="dist/main.js" type="module"></script>
   <style>
     body {
       font-family: sans-serif;
@@ -14,10 +13,13 @@
 </head>
 <body>
   <battery-status percentage="100"></battery-status>
-  <battery-status percentage="65"></battery-status>
+  <!-- <battery-status percentage="65"></battery-status>
   <battery-status percentage="45"></battery-status>
   <battery-status percentage="20"></battery-status>
   <battery-status percentage="0"></battery-status>
-  <battery-status percentage="50" state="charging"></battery-status>
+  <battery-status percentage="50" state="charging"></battery-status> -->
+
+  <!-- This file only exists in the context of Webpack Dev Server -->
+  <script src="main.js"></script>
 </body>
 </html>

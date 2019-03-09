@@ -2,13 +2,16 @@
   "name": "battery-indicator-element",
   "version": "1.0.0",
   "description": "Battery status indicator custom element.",
-  "main": "src/main.js",
+  "main": "dist/main.js",
+  "module": "dist/main.js",
+  "sideEffects": false,
   "private": true,
   "scripts": {
-    "build": "tsc && sed -i 's#lit-element#/web_modules/lit-element.js#' dist/main.js",
-    "start": "serve .",
-    "lint": "eslint .",
-    "prepare": "pika-web"
+    "start": "webpack-dev-server --mode development --open",
+    "start:build": "serve dist/",
+    "build": "webpack --mode production",
+    "build:stats": "webpack --mode production --profile --json > stats.json",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,20 +24,32 @@
   },
   "homepage": "https://github.com/adamvig/battery-indicator-element#readme",
   "devDependencies": {
-    "@pika/web": "^0.3.0",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-template-html-minifier": "^2.2.1",
+    "clean-webpack-plugin": "^2.0.0",
     "eslint": "^5.15.1",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-lit": "^0.6.0",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-standard": "^4.0.0",
-    "serve": "^10.1.2",
-    "typescript": "^3.3.3333"
-  },
-  "dependencies": {
+    "fast-async": "^6.3.8",
+    "html-webpack-plugin": "^3.2.0",
     "lit-element": "^2.0.1",
-    "tslib": "^1.9.3"
-  }
+    "raw-loader": "^1.0.0",
+    "serve": "^10.1.2",
+    "terser-webpack-plugin": "^1.2.3",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {}
 }
