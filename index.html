@@ -9,17 +9,25 @@
     body {
       font-family: sans-serif;
     }
+    battery-status,
+    battery-indicator {
+      display: block;
+    }
   </style>
 </head>
 <body>
   <battery-status percentage="100"></battery-status>
-  <!-- <battery-status percentage="65"></battery-status>
+  <battery-status percentage="65"></battery-status>
   <battery-status percentage="45"></battery-status>
   <battery-status percentage="20"></battery-status>
   <battery-status percentage="0"></battery-status>
-  <battery-status percentage="50" state="charging"></battery-status> -->
-
-  <!-- This file only exists in the context of Webpack Dev Server -->
-  <script src="main.js"></script>
+  <battery-status percentage="40" state="charging"></battery-status>
+  <battery-status state="unknown"></battery-status>
+  <battery-status state="alert"></battery-status>
+  <battery-status percentage="-10"></battery-status>
+  <battery-status percentage="101"></battery-status>
+  <battery-status percentage="foo"></battery-status>
+  <battery-indicator percentage="0"></battery-indicator>
+  <battery-indicator percentage="100"></battery-indicator>
 </body>
 </html>
