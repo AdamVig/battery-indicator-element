@@ -36,10 +36,6 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.svg$/i,
-        use: 'raw-loader'
-      },
-      {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: [

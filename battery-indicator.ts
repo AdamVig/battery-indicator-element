@@ -1,90 +1,58 @@
-import { LitElement, html, css, customElement, property } from 'lit-element'
-import { unsafeHTML } from 'lit-html/directives/unsafe-html'
+import { LitElement, svg, customElement, property } from 'lit-element'
+import { directive, AttributePart, Part } from 'lit-html'
 
 import { State } from './battery-state'
-import battery20 from './img/battery-20.svg'
-import battery30 from './img/battery-30.svg'
-import battery50 from './img/battery-50.svg'
-import battery60 from './img/battery-60.svg'
-import battery80 from './img/battery-80.svg'
-import battery90 from './img/battery-90.svg'
-import battery100 from './img/battery-100.svg'
-import batteryCharging20 from './img/battery-charging-20.svg'
-import batteryCharging30 from './img/battery-charging-30.svg'
-import batteryCharging50 from './img/battery-charging-50.svg'
-import batteryCharging60 from './img/battery-charging-60.svg'
-import batteryCharging80 from './img/battery-charging-80.svg'
-import batteryCharging90 from './img/battery-charging-90.svg'
-import batteryCharging100 from './img/battery-charging-100.svg'
-import batteryUnknown from './img/battery-unknown.svg'
-import batteryAlert from './img/battery-alert.svg'
+
+/**
+ * For AttributeParts, sets the attribute if the test evalutes to `true` and removes
+ * the attribute if the test evaluates to `false`.
+ *
+ * For other part types, this directive is a no-op.
+ *
+ * Based on `ifDefined` from `lit-html`.
+ */
+const ifFalse = directive((test: boolean, value: unknown) => (part: Part) => {
+  if (test === true && part instanceof AttributePart) {
+    part.committer.element.removeAttribute(part.committer.name)
+  } else {
+    part.setValue(value)
+  }
+})
 
 @customElement('battery-indicator')
 export class BatteryIndicator extends LitElement {
   @property({ type: Number }) percentage: number = 0;
   @property({ type: String }) state: State = undefined;
 
-  static get styles () {
-    return css`
-      svg {
-        vertical-align: top;
-      }
-    `
-  }
-
-  private static readonly iconPercentages: number[] = [
-    20,
-    30,
-    50,
-    60,
-    80,
-    90,
-    100
-  ]
-
-  private static readonly normalIcons: {[key: number]: string} = {
-    20: battery20,
-    30: battery30,
-    50: battery50,
-    60: battery60,
-    80: battery80,
-    90: battery90,
-    100: battery100
-  }
-
-  private static readonly chargingIcons: {[key: number]: string} = {
-    20: batteryCharging20,
-    30: batteryCharging30,
-    50: batteryCharging50,
-    60: batteryCharging60,
-    80: batteryCharging80,
-    90: batteryCharging90,
-    100: batteryCharging100
-  }
-
-  private getIcon (): string {
-    if (this.state === 'alert') {
-      return batteryAlert
-    } else if (this.state === 'unknown' || !this.percentageIsValid()) {
-      return batteryUnknown
-    } else if (this.state === 'charging') {
-      return BatteryIndicator.chargingIcons[this.getNearestPercentage()]
-    } else {
-      return BatteryIndicator.normalIcons[this.getNearestPercentage()]
-    }
-  }
-
   protected percentageIsValid (): boolean {
     return !Number.isNaN(this.percentage) && this.percentage >= 0 && this.percentage <= 100
   }
 
-  private getNearestPercentage () {
-    return BatteryIndicator.iconPercentages
-      .reduce((prev, curr) => Math.abs(curr - this.percentage) < Math.abs(prev - this.percentage) ? curr : prev)
-  }
-
   render () {
-    return html`${unsafeHTML(this.getIcon())}`
+    const totalWidth = 48
+    let width = totalWidth
+    if ((this.state === undefined || this.state === 'charging') && this.percentageIsValid()) {
+      width = totalWidth * (this.percentage / 100)
+    }
+
+    return svg`
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+      <defs>
+        <clipPath id="percentageClip">
+          <path fill="none" d="M0 0h${width}v48H0z"/>
+        </clipPath>
+        <path id="batteryPath" d="M3.696 11.482a3.13 3.13 0 0 0-3.132 3.132V31.83a3.13 3.13 0 0 0 3.132 3.132H12.3v-.011h27.377a3.125 3.125 0 0 0 3.134-3.132V27.91h4.693v-9.387H42.81v-3.909a3.125 3.125 0 0 0-3.134-3.132H12.3z"/>
+      </defs>
+      <path d="M0 0h48v48H0z" fill="none"/>
+      <!-- TODO why can't the fill of these paths be white? -->
+      <path fill="#aaa" display="${ifFalse(this.state === 'charging', 'none')}" d="M23.306 13.023v8.63h3.139l-3.767 7.061h.01l-2.52 4.707v-8.629H17.03z"/>
+      <path fill="#aaa" display="${ifFalse(this.state === 'alert', 'none')}" d="M24.004 33.443H19.47V28.91h4.533zM24.004 24.377H19.47V13.045h4.533z"/>
+      <path fill="#aaa" display="${ifFalse(this.state === 'unknown', 'none')}" d="M23.366 33.443H19.47v-3.895h3.895zM26.133 22.66s-.779.86-1.373 1.455c-.994.994-1.702 2.347-1.702 3.28h-3.28c0-1.701.943-3.126 1.907-4.09l1.906-1.937a3.071 3.071 0 0 0-2.173-5.248 3.071 3.071 0 0 0-3.075 3.075h-3.075a6.155 6.155 0 0 1 6.15-6.15 6.155 6.155 0 0 1 6.15 6.15 4.854 4.854 0 0 1-1.435 3.465z"/>
+      <!-- TODO why does this clip-path seem to be on top of the paths above it? -->
+      <use href="#batteryPath" clip-path="url(#percentageClip)"/>
+      <use href="#batteryPath" fill="#000" fill-opacity="0.3"/>
+    </svg>
+    `
   }
 }
 

@@ -6,18 +6,22 @@ import { BatteryIndicator } from './battery-indicator'
 export class BatteryStatus extends BatteryIndicator {
   static get styles () {
     return css`
-      span {
-        line-height: 24px;
+      :host {
+        display: flex;
       }
-      svg {
-        vertical-align: top;
+      p {
+        display: inline-block;
+        margin-right: 5px;
       }
     `
   }
 
   render () {
     if (super.percentageIsValid()) {
-      return html`<span>${this.percentage}%</span> ${super.render()}`
+      return html`
+        <p>${this.percentage}%</p>
+        ${super.render()}
+      `
     } else {
       return super.render()
     }
