@@ -8,7 +8,7 @@ import { directive, AttributePart, Part } from 'lit-html'
  *
  * Based on `ifDefined` from `lit-html`.
  */
-export const ifFalse = directive((test: boolean, value: unknown) => (part: Part) => {
+export const ifTrue = directive((test: boolean, value: unknown) => (part: Part) => {
   if (test === true && part instanceof AttributePart) {
     part.committer.element.removeAttribute(part.committer.name)
   } else {

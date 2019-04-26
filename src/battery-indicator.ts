@@ -1,7 +1,7 @@
 import { LitElement, svg, customElement, property } from 'lit-element'
 
 import { State } from './battery-state'
-import { ifFalse } from './if-false'
+import { ifTrue } from './if-true'
 
 @customElement('battery-indicator')
 export class BatteryIndicator extends LitElement {
@@ -31,9 +31,9 @@ export class BatteryIndicator extends LitElement {
       <use href="#batteryPath" clip-path="url(#percentageClip)"/>
       <use href="#batteryPath" fill="#000" fill-opacity="0.3"/>
 
-      <path fill="#fff" display="${ifFalse(this.state === 'charging', 'none')}" d="M23.306 13.023v8.63h3.139l-3.767 7.061h.01l-2.52 4.707v-8.629H17.03z"/>
-      <path fill="#fff" display="${ifFalse(this.state === 'alert', 'none')}" d="M24.004 33.443H19.47V28.91h4.533zM24.004 24.377H19.47V13.045h4.533z"/>
-      <path fill="#fff" display="${ifFalse(this.state === 'unknown', 'none')}" d="M23.366 33.443H19.47v-3.895h3.895zM26.133 22.66s-.779.86-1.373 1.455c-.994.994-1.702 2.347-1.702 3.28h-3.28c0-1.701.943-3.126 1.907-4.09l1.906-1.937a3.071 3.071 0 0 0-2.173-5.248 3.071 3.071 0 0 0-3.075 3.075h-3.075a6.155 6.155 0 0 1 6.15-6.15 6.155 6.155 0 0 1 6.15 6.15 4.854 4.854 0 0 1-1.435 3.465z"/>
+      <path fill="#fff" display="${ifTrue(this.state === 'charging', 'none')}" d="M23.306 13.023v8.63h3.139l-3.767 7.061h.01l-2.52 4.707v-8.629H17.03z"/>
+      <path fill="#fff" display="${ifTrue(this.state === 'alert', 'none')}" d="M24.004 33.443H19.47V28.91h4.533zM24.004 24.377H19.47V13.045h4.533z"/>
+      <path fill="#fff" display="${ifTrue(this.state === 'unknown', 'none')}" d="M23.366 33.443H19.47v-3.895h3.895zM26.133 22.66s-.779.86-1.373 1.455c-.994.994-1.702 2.347-1.702 3.28h-3.28c0-1.701.943-3.126 1.907-4.09l1.906-1.937a3.071 3.071 0 0 0-2.173-5.248 3.071 3.071 0 0 0-3.075 3.075h-3.075a6.155 6.155 0 0 1 6.15-6.15 6.155 6.155 0 0 1 6.15 6.15 4.854 4.854 0 0 1-1.435 3.465z"/>
     </svg>
     `
   }
