@@ -1,6 +1,7 @@
 import { css, customElement, html } from 'lit-element'
 
 import { BatteryIndicator } from './battery-indicator'
+import { percentageIsValid } from './percentage-is-valid'
 
 @customElement('battery-status')
 export class BatteryStatus extends BatteryIndicator {
@@ -17,7 +18,7 @@ export class BatteryStatus extends BatteryIndicator {
   }
 
   render () {
-    if (super.percentageIsValid()) {
+    if (percentageIsValid(this.percentage)) {
       return html`
         <p>${this.percentage}%</p>
         ${super.render()}
