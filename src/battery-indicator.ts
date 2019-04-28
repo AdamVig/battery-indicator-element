@@ -11,6 +11,9 @@ export class BatteryIndicator extends LitElement {
 
   static get styles () {
     return css`
+      :host {
+        display: inline-block;
+      }
       .charge {
         fill: var(--charge-fill, #000);
         fill-opacity: var(--charge-fill-opacity, 1.0);
@@ -26,21 +29,19 @@ export class BatteryIndicator extends LitElement {
     `
   }
 
-  private getChargeWidth (): number {
-    const totalWidth = 48
-    let width = totalWidth
+  private getPercentage (): number {
     if ((this.state === undefined || this.state === 'charging') && percentageIsValid(this.percentage)) {
-      width = totalWidth * (this.percentage / 100)
+      return this.percentage
     }
-    return width
+    return 100
   }
 
   render () {
     return svg`
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48">
       <defs>
         <clipPath id="percentageClip">
-          <path fill="none" d="M0 0h${this.getChargeWidth()}v48H0z"/>
+          <path fill="none" d="M0 0h48v48H0z" transform="scale(${this.getPercentage() / 100}, 1)"/>
         </clipPath>
         <path
           id="batteryPath"

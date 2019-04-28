@@ -33,6 +33,7 @@ This element requires ES2015 language features and the following browser APIs:
 3. <http://localhost:8080>
 
 ### To Do
-- [ ] Make indicator scale to fill container
 - [ ] Make status scale to fill container with percentage
+- [ ] Merge status element into indicator element
+- [ ] Reduce height of SVG to about 24px (from 48px)
 - [ ] Add test suite
