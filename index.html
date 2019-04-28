@@ -34,5 +34,29 @@
   <battery-indicator state="alert"></battery-indicator>
   <h3>Unknown</h3>
   <battery-indicator state="unknown"></battery-indicator>
+  <h3>Animated</h3>
+  <p>Animation is not yet implemented.</p>
+  <battery-indicator id="animated" percentage="0"></battery-indicator>
+
+  <script>
+    let increasing = true
+    function getNextPercentage(el, stepSize) {
+      if (el.percentage === 0) {
+        increasing = true
+      } else if (el.percentage === 100) {
+        increasing = false
+      }
+
+      if (increasing === true) {
+        return el.percentage + stepSize
+      } else {
+        return el.percentage - stepSize
+      }
+    }
+
+    const stepSize = 10
+    const el = document.querySelector('battery-indicator#animated')
+    setInterval(() => el.percentage = getNextPercentage(el, stepSize), 1000)
+  </script>
 </body>
 </html>
