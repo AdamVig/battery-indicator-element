@@ -9,21 +9,25 @@
     body {
       font-family: sans-serif;
     }
+    h2 {
+      margin-bottom: 0;
+    }
+    battery-indicator.themed {
+      --charge-fill: green;
+    }
   </style>
 </head>
 <body>
-  <battery-status percentage="100"></battery-status>
-  <battery-status percentage="65"></battery-status>
-  <battery-status percentage="45"></battery-status>
-  <battery-status percentage="20"></battery-status>
-  <battery-status percentage="0"></battery-status>
-  <battery-status percentage="40" state="charging"></battery-status>
-  <battery-status state="unknown"></battery-status>
-  <battery-status state="alert"></battery-status>
-  <battery-status percentage="-10"></battery-status>
-  <battery-status percentage="101"></battery-status>
-  <battery-status percentage="foo"></battery-status>
-  <battery-indicator percentage="0"></battery-indicator>
-  <battery-indicator percentage="100"></battery-indicator>
+  <h1>Without Percentage</h1>
+  <h2>10%</h2>
+  <battery-indicator percentage="10"></battery-indicator>
+  <h2>Themed</h2>
+  <battery-indicator class="themed" percentage="50" state="charging"></battery-indicator>
+  <h2>75% charged</h2>
+  <battery-indicator percentage="75" state="charging"></battery-indicator>
+  <h2>Alert</h2>
+  <battery-indicator state="alert"></battery-indicator>
+  <h2>Unknown</h2>
+  <battery-indicator state="unknown"></battery-indicator>
 </body>
 </html>
