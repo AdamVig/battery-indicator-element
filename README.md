@@ -13,6 +13,8 @@ Battery status indicator custom element.
 #### Theming
 ```css
 battery-indicator {
+  width: 48px;
+  height: 48px;
   --charge-fill: #000;
   --charge-fill-opacity: 1.0;
   --background-fill: #000;
