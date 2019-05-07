@@ -36,6 +36,5 @@ This element requires ES2015 language features and the following browser APIs:
 
 ### To Do
 - [ ] Make status scale to fill container with percentage
-- [ ] Merge status element into indicator element
 - [ ] Reduce height of SVG to about 24px (from 48px)
 - [ ] Add test suite

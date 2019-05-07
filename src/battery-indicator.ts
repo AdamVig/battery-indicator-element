@@ -1,4 +1,4 @@
-import { css, customElement, LitElement, property, svg } from 'lit-element'
+import { css, customElement, LitElement, property, svg, html, SVGTemplateResult, TemplateResult } from 'lit-element'
 
 import { State } from './battery-state'
 import { ifTrue } from './if-true'
@@ -8,6 +8,7 @@ import { percentageIsValid } from './percentage-is-valid'
 export class BatteryIndicator extends LitElement {
   @property({ type: Number }) percentage: number = 0;
   @property({ type: String }) state: State = undefined;
+  @property({ type: Boolean, attribute: 'show-percentage' }) showPercentage: boolean = false;
 
   static get styles () {
     return css`
@@ -36,7 +37,7 @@ export class BatteryIndicator extends LitElement {
     return 100
   }
 
-  render () {
+  renderIndicator (): SVGTemplateResult {
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 48">
       <defs>
@@ -64,6 +65,14 @@ export class BatteryIndicator extends LitElement {
         display="${ifTrue(this.state === 'unknown', 'none')}"
         d="M23.366 33.443H19.47v-3.895h3.895zM26.133 22.66s-.779.86-1.373 1.455c-.994.994-1.702 2.347-1.702 3.28h-3.28c0-1.701.943-3.126 1.907-4.09l1.906-1.937a3.071 3.071 0 0 0-2.173-5.248 3.071 3.071 0 0 0-3.075 3.075h-3.075a6.155 6.155 0 0 1 6.15-6.15 6.155 6.155 0 0 1 6.15 6.15 4.854 4.854 0 0 1-1.435 3.465z"/>
     </svg>`
+  }
+
+  render (): TemplateResult {
+    if (this.showPercentage) {
+      return html`<span>${this.percentage}%</span> ${this.renderIndicator()}`
+    }
+
+    return this.renderIndicator()
   }
 }
 
