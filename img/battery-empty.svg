@@ -8,12 +8,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="48"
-   height="48"
-   viewBox="0 0 48 48"
+   height="24"
+   viewBox="0 0 48 24"
    version="1.1"
    id="svg8"
    sodipodi:docname="battery-empty.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata14">
     <rdf:RDF>
@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,22 +37,22 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
+     inkscape:window-width="2560"
+     inkscape:window-height="1475"
      id="namedview10"
      showgrid="false"
      inkscape:zoom="9.8333333"
-     inkscape:cx="28.016283"
-     inkscape:cy="35.924926"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:cx="9.2408802"
+     inkscape:cy="23.388122"
+     inkscape:window-x="-13"
+     inkscape:window-y="-13"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg8"
      showguides="true"
      inkscape:guide-bbox="true" />
   <path
-     style="fill:none;fill-opacity:0.29803922;stroke:#000000;stroke-width:1.00144446;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     d="m 3.6963394,11.482384 c -1.7250406,0 -3.1320789,1.395303 -3.1320789,3.132078 v 17.215934 c 0,1.72504 1.3953033,3.132078 3.1320789,3.132078 H 12.29858 v -0.01146 h 27.377533 c 1.736775,0 3.133988,-1.395304 3.133988,-3.132078 V 27.91004 h 4.693345 v -9.386687 h -4.693345 v -3.908895 c 0,-1.736775 -1.397213,-3.132078 -3.133988,-3.132078 H 12.29858 Z"
+     style="fill:none;fill-opacity:0.29803922;stroke:#000000;stroke-width:0.99205047;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 3.6326924,0.49602915 c -1.7275676,0 -3.13666717,1.36724585 -3.13666717,3.06909725 V 20.434878 c 0,1.690352 1.39734737,3.069097 3.13666717,3.069097 h 8.6148426 v -0.01123 h 27.41764 c 1.739319,0 3.138579,-1.367247 3.138579,-3.069098 v -3.830294 h 4.700221 V 7.3954164 H 42.803754 V 3.5651225 c 0,-1.7018515 -1.39926,-3.06909727 -3.138579,-3.06909727 h -27.41764 z"
      id="path4"
      inkscape:connector-curvature="0" />
 </svg>
