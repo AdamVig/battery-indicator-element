@@ -13,7 +13,12 @@ export class BatteryIndicator extends LitElement {
   static get styles () {
     return css`
       :host {
-        display: inline-block;
+        display: flex;
+        align-items: flex-end;
+      }
+      .percentage {
+        font-size: var(--percentage-font-size, 16px);
+        color: var(--percentage-color, #000);
       }
       .charge {
         fill: var(--charge-fill, #000);
@@ -69,7 +74,7 @@ export class BatteryIndicator extends LitElement {
 
   render (): TemplateResult {
     if (this.showPercentage) {
-      return html`<span>${this.percentage}%</span> ${this.renderIndicator()}`
+      return html`<span class="percentage">${this.percentage}%</span> ${this.renderIndicator()}`
     }
 
     return this.renderIndicator()

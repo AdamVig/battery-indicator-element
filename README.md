@@ -11,6 +11,7 @@ Battery status indicator custom element.
 ```
 
 #### Theming
+##### Example
 ```css
 battery-indicator {
   width: 48px;
@@ -23,6 +24,18 @@ battery-indicator {
   --status-fill-opacity: 1.0;
 }
 ```
+
+##### Available Variables
+ variable name              | default | description
+----------------------------|---------|-------------
+--charge-fill               | #000    | Fill color of area that represents charge.
+--charge-fill-opacity       | 1.0     | Opacity of area that represents charge.
+--background-fill           | #000    | Fill color of background.
+--background-fill-opacity   | 0.3     | Opacity of background.
+--status-fill               | #fff    | Fill color of status icon (unknown, alert, charging).
+--status-fill-opacity       | 1.0     | Opacity of status icon (unknown, alert, charging).
+ --percentage-font-size     | 16px    | Font size of the percentage.
+ --percentage-color         | #000    | Color of the percentage.
 
 ### Browser Support
 This element requires ES2015 language features and the following browser APIs:
