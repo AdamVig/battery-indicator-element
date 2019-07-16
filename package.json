@@ -6,7 +6,6 @@
   "module": "dist/main.js",
   "types": "dist/main.d.ts",
   "sideEffects": false,
-  "private": true,
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "start:build": "serve dist/",
