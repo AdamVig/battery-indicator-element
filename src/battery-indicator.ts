@@ -44,7 +44,7 @@ export class BatteryIndicator extends LitElement {
 
   renderIndicator (): SVGTemplateResult {
     return svg`
-    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 48 24">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 48 24">
       <defs>
         <clipPath id="percentageClip">
           <path fill="none" d="M0 0h48v48H0z" transform="scale(${this.getPercentage() / 100}, 1)"/>
