@@ -12,36 +12,23 @@
     h2 {
       margin-bottom: 0;
     }
-    battery-indicator {
+    .container {
       width: 48px;
-      height: 24px;
     }
-    battery-indicator[show-percentage] {
+    .container.show-percentage {
       width: 100px;
-      height: 24px;
     }
     battery-indicator.themed {
       --charge-fill: green;
     }
-    .responsive {
-      display: flex;
-      align-items: center;
-    }
-    .responsive section {
-      margin: 10px;
-    }
-    .responsive battery-indicator {
-      height: initial;
-      width: initial;
-    }
-    .responsive .small {
+    .container.small {
       width: 24px;
     }
-    .responsive .medium {
+    .container.medium {
       width: 48px;
     }
-    .responsive .large {
-      width: 72px;
+    .container.large {
+      width: 144px;
     }
   </style>
 </head>
@@ -49,28 +36,44 @@
   <h1>Battery Indicator Element</h1>
   <h2>Without Percentage</h2>
   <h3>10%</h3>
-  <battery-indicator percentage="10"></battery-indicator>
+  <div class="container">
+    <battery-indicator percentage="10"></battery-indicator>
+  </div>
   <h3>Themed</h3>
-  <battery-indicator class="themed" percentage="50" state="charging"></battery-indicator>
+  <div class="container">
+    <battery-indicator class="themed" percentage="50" state="charging"></battery-indicator>
+  </div>
   <h3>75% charged</h3>
-  <battery-indicator percentage="75" state="charging"></battery-indicator>
+  <div class="container">
+    <battery-indicator percentage="75" state="charging"></battery-indicator>
+  </div>
   <h3>Alert</h3>
-  <battery-indicator state="alert"></battery-indicator>
+  <div class="container">
+    <battery-indicator state="alert"></battery-indicator>
+  </div>
   <h3>Unknown</h3>
-  <battery-indicator state="unknown"></battery-indicator>
+  <div class="container">
+    <battery-indicator state="unknown"></battery-indicator>
+  </div>
   <h3>With Percentage</h3>
-  <battery-indicator percentage="50" show-percentage></battery-indicator>
+  <div class="container show-percentage">
+    <battery-indicator percentage="50" show-percentage></battery-indicator>
+  </div>
   <h3>Responsive</h3>
-  <section class="responsive">
-    <section class="small"><battery-indicator percentage="25"></battery-indicator></section>
-    <section class="medium"><battery-indicator percentage="50"></battery-indicator></section>
-    <section class="large"><battery-indicator percentage="75"></battery-indicator></section>
-  </section>
-  <section class="responsive">
-    <section class="small"><battery-indicator percentage="25" show-percentage></battery-indicator></section>
-    <section class="medium"><battery-indicator percentage="50" show-percentage></battery-indicator></section>
-    <section class="large"><battery-indicator percentage="75" show-percentage></battery-indicator></section>
-  </section>
+  <h4>Without Percentage</h4>
+  <h4>24px wide</h4>
+  <div class="container small"><battery-indicator percentage="25"></battery-indicator></div>
+  <h4>48px wide</h4>
+  <div class="container medium"><battery-indicator percentage="50"></battery-indicator></div>
+  <h4>144px wide</h4>
+  <div class="container large"><battery-indicator percentage="75"></battery-indicator></div>
+  <h4>With Percentage</h4>
+  <h4>24px wide</h4>
+  <div class="container show-percentage small"><battery-indicator percentage="25" show-percentage></battery-indicator></div>
+  <h4>48px wide</h4>
+  <div class="container show-percentage medium"><battery-indicator percentage="50" show-percentage></battery-indicator></div>
+  <h4>144px wide</h4>
+  <div class="container show-percentage large"><battery-indicator percentage="75" show-percentage></battery-indicator></div>
   <!-- TODO implement animation
   <h3>Animated</h3>
   <p>Animation is not yet implemented.</p>
