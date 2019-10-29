@@ -46,6 +46,8 @@ export class BatteryIndicator extends LitElement {
     const textWidthPx = 38
     return svg`
     <svg
+      width="100%"
+      height="100%"
       viewBox="0 0 ${this.showPercentage ? 48 + textWidthPx : 48} 24"
       aria-labelledby="title">
       <title id="title">${this.buildTitle()}</title>
