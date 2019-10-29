@@ -14,7 +14,7 @@ export class BatteryIndicator extends LitElement {
     return css`
       .percentage {
         font-size: 16px;
-        color: var(--percentage-color, #000);
+        fill: var(--percentage-color, #000);
       }
       .charge {
         fill: var(--charge-fill, #000);
