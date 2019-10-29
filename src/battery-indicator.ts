@@ -66,8 +66,8 @@ export class BatteryIndicator extends LitElement {
         y="18"
         display="${ifTrue(this.showPercentage, 'none')}">${this.percentage}%</text>
       <g transform="translate(${ifTrue(!this.showPercentage, textWidthPx)}, 0)">
-        <use class="charge" href="#batteryPath" clip-path="url(#percentageClip)"/>
         <use class="background" href="#batteryPath"/>
+        <use class="charge" href="#batteryPath" clip-path="url(#percentageClip)"/>
 
         <path
           class="status"
