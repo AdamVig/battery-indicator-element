@@ -39,7 +39,7 @@ export class BatteryIndicator extends LitElement {
   }
 
   private buildTitle (): string {
-    return `Battery Charge${this.showPercentage ? '' : ` ${this.getPercentage()}%`}`
+    return `Battery Charge${this.showPercentage === true ? ` ${this.getPercentage()}%`: ''}`
   }
 
   render (): SVGTemplateResult {
