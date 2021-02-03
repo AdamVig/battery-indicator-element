@@ -1,50 +1,54 @@
-import { css, customElement, LitElement, property, svg, SVGTemplateResult } from 'lit-element'
+import { css, customElement, LitElement, property, svg, SVGTemplateResult } from 'lit-element';
 
-import { State } from './battery-state'
-import { ifTrue } from './if-true'
-import { percentageIsValid } from './percentage-is-valid'
+import { State } from './battery-state';
+import { ifTrue } from './if-true';
+import { percentageIsValid } from './percentage-is-valid';
 
 @customElement('battery-indicator')
 export class BatteryIndicator extends LitElement {
-  @property({ type: Number }) percentage: number = 0;
-  @property({ type: String }) state: State = undefined;
-  @property({ type: Boolean, attribute: 'show-percentage' }) showPercentage: boolean = false;
+	@property({ type: Number }) percentage = 0;
+	@property({ type: String }) state: State = undefined;
+	@property({ type: Boolean, attribute: 'show-percentage' })
+	showPercentage = false;
 
-  static get styles () {
-    return css`
-      .percentage {
-        font-size: 16px;
-        fill: var(--percentage-color, #000);
-      }
-      .charge {
-        fill: var(--charge-fill, #000);
-        fill-opacity: var(--charge-fill-opacity, 1.0);
-      }
-      .background {
-        fill: var(--background-fill, #000);
-        fill-opacity: var(--background-fill-opacity, 0.3);
-      }
-      .status {
-        fill: var(--status-fill, #fff);
-        fill-opacity: var(--status-fill-opacity, 1.0);
-      }
-    `
-  }
+	static get styles() {
+		return css`
+			.percentage {
+				font-size: 16px;
+				fill: var(--percentage-color, #000);
+			}
+			.charge {
+				fill: var(--charge-fill, #000);
+				fill-opacity: var(--charge-fill-opacity, 1);
+			}
+			.background {
+				fill: var(--background-fill, #000);
+				fill-opacity: var(--background-fill-opacity, 0.3);
+			}
+			.status {
+				fill: var(--status-fill, #fff);
+				fill-opacity: var(--status-fill-opacity, 1);
+			}
+		`;
+	}
 
-  private getPercentage (): number {
-    if ((this.state === undefined || this.state === 'charging') && percentageIsValid(this.percentage)) {
-      return this.percentage
-    }
-    return 100
-  }
+	private getPercentage(): number {
+		if (
+			(this.state === undefined || this.state === 'charging') &&
+			percentageIsValid(this.percentage)
+		) {
+			return this.percentage;
+		}
+		return 100;
+	}
 
-  private buildTitle (): string {
-    return `Battery Charge${this.showPercentage === true ? ` ${this.getPercentage()}%`: ''}`
-  }
+	private buildTitle(): string {
+		return `Battery Charge${this.showPercentage === true ? ` ${this.getPercentage()}%` : ''}`;
+	}
 
-  render (): SVGTemplateResult {
-    const textWidthPx = 38
-    return svg`
+	render(): SVGTemplateResult {
+		const textWidthPx = 38;
+		return svg`
     <svg
       width="100%"
       height="100%"
@@ -82,12 +86,12 @@ export class BatteryIndicator extends LitElement {
           display="${ifTrue(this.state === 'unknown', 'none')}"
           d="M23.178 21.25h-3.533v-3.533h3.533zM25.688 11.47s-.707.781-1.246 1.32c-.902.902-1.543 2.13-1.543 2.975h-2.975c0-1.543.855-2.835 1.73-3.71l1.728-1.756a2.785 2.785 0 0 0-1.97-4.76 2.785 2.785 0 0 0-2.79 2.789h-2.788c0-3.077 2.5-5.578 5.577-5.578 3.078 0 5.578 2.5 5.578 5.578a4.402 4.402 0 0 1-1.301 3.142z"/>
       </g>
-    </svg>`
-  }
+    </svg>`;
+	}
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'battery-indicator': BatteryIndicator
-  }
+	interface HTMLElementTagNameMap {
+		'battery-indicator': BatteryIndicator;
+	}
 }

@@ -1,4 +1,4 @@
-import { directive, AttributePart, Part } from 'lit-html'
+import { directive, AttributePart, Part } from 'lit-html';
 
 /**
  * For AttributeParts, sets the attribute if the test evalutes to `true` and removes
@@ -9,9 +9,9 @@ import { directive, AttributePart, Part } from 'lit-html'
  * Based on `ifDefined` from `lit-html`.
  */
 export const ifTrue = directive((test: boolean, value: unknown) => (part: Part) => {
-  if (test === true && part instanceof AttributePart) {
-    part.committer.element.removeAttribute(part.committer.name)
-  } else {
-    part.setValue(value)
-  }
-})
+	if (test === true && part instanceof AttributePart) {
+		part.committer.element.removeAttribute(part.committer.name);
+	} else {
+		part.setValue(value);
+	}
+});
