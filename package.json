@@ -35,7 +35,7 @@
     "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-lit": "^1.1.1",
     "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "*",
     "fast-async": "^6.3.8",
     "html-webpack-plugin": "^5.2.0",
